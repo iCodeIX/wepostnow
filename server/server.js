@@ -21,6 +21,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type'],
     exposedHeaders: ['Content-Type']
 }));
+
 app.use('/public/uploads/profilephotos', express.static('images'));
 
 const port = process.env.PORT || 3000;

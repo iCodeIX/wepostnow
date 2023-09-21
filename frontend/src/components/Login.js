@@ -49,6 +49,7 @@ const Login = () => {
                 if (userCheck) {
                     navigate('/main');
                     localStorage.setItem('id', userCheck.user._id);
+                    localStorage.setItem('profileImg', userCheck.user.profileImg);
 
                 } else {
                     setWrongPassDisp(true);
