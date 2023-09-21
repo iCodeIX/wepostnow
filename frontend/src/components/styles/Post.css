@@ -1,0 +1,65 @@
+.posts-list {
+    margin: 15px;
+}
+
+.userposts-text{
+    color: var(--darkgray-color);
+    font-size: 14px;
+    border-top:2px solid var(--darkgray-color);
+    padding: 10px 10px;
+}
+.post-item {
+    background: var(--white-color);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 2px var(--black-color);
+}
+
+.link-container {
+    width: 100%;
+}
+
+.post-user--photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-self: baseline;
+}
+
+.post-username {
+    color: var(--white-color);
+    background: var(--blue-color);
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.post-content {
+    padding: 15px;
+    font-weight: 700;
+    color: var(--black-color);
+    font-size: 14px;
+}
+
+.post-date,
+.post-time {
+    align-self: flex-end;
+    font-size: 0.7rem;
+    color: var(--black-color);
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+/* Example of how to fade our content in */
+
+.LazyLoad {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.is-visible {
+    opacity: 1;
+}

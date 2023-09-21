@@ -1,0 +1,43 @@
+:root {
+    --blue-color: #1A72E8;
+    --yellow-color: #FFE019;
+    --white-color: #FFFFFF;
+    --gray-color: #CCCDCC;
+    --black-color: #1D1818;
+    --darkgray-color: #383838;
+    --warning-bg-color: #BB2525;
+
+    --success-bg-color: #1A5D1A;
+
+    --font-family: 'Libre Baskerville', serif;
+
+}
+
+html,
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+body {
+    /* background: var(--dark-color); */
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    outline: 0;
+}
+
+.text-light {
+    color: var(--light-color);
+}
+
+.App {
+    min-width: 100%;
+    /* background: var(--dark-color); */
+}

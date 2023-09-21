@@ -1,0 +1,96 @@
+.signup-container {
+    min-height: 100vh;
+    padding: 15px;
+}
+
+.signup-container,
+.signup-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.signup-text {
+    text-align: center;
+    color: var(--black-color);
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.error-msg {
+    color: var(--white-color);
+    background: var(--warning-bg-color);
+    font-size: 12px;
+    padding:5px;
+    border-radius: 5px;
+   align-self: flex-start;
+}
+
+.form-input-reg {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input-reg label {
+    font-size: 16px;
+    margin:10px 0;
+    color: var(--black-color);
+}
+
+.form-input-reg input {
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid var(--light-color);
+    border: 1px solid var(--gray-color);
+}
+
+.password-visibility-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.visibility-icon{
+cursor: pointer;
+}
+
+.form-input-reg:not(:nth-child(5)) input:focus {
+    box-shadow: 0 0 5px var(--blue-color);
+}
+
+.gender-radio-btns {
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.gender-radios-btns input {
+    cursor: pointer;
+
+}
+
+.gender-label {
+    font-size: 16px;
+   
+}
+
+.signup-btn {
+    font-size: 16px;
+    padding: 10px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    outline: 0;
+    cursor: pointer;
+    background: var(--blue-color);
+    color: var(--white-color);
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid var(--blue-color);
+
+}
