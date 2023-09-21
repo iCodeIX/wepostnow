@@ -15,8 +15,11 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors({
-    origin: true,
-    credentials: true
+    origin: '*',
+    credentials: true,
+    methods: ['GET', 'POST', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
+    exposedHeaders: ['Content-Type']
 }));
 app.use('/public/uploads/profilephotos', express.static('images'));
 
