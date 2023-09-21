@@ -1,4 +1,6 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({ path: __dirname + '/.env' });
+}
 //import depencies
 const express = require("express");
 const connection = require("./config/connection");
@@ -18,6 +20,8 @@ app.use(cors({
 }));
 app.use('/public/uploads/profilephotos', express.static('images'));
 
+const port = process.env.PORT || 3000;
+
 connection();
 
 
@@ -36,4 +40,4 @@ app.post("/posts", postController.fetchAllPosts);
 app.post("/create-comment", commentController.createComment);
 app.post("/fetch-comments", commentController.fetchComments);
 
-app.listen(process.env.PORT);
+app.listen(port);
