@@ -1,4 +1,4 @@
-const { response } = require("express");
+
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 
@@ -6,10 +6,9 @@ const bcrypt = require("bcryptjs");
 async function createUser(req, res) {
     const { username, email, password, gender } = req.body;
     const decodedPass = bcrypt.hashSync(password);
-    const url = req.protocol + '://' + req.get('host');
     const defaultAvatar = "http://localhost:3000/public/uploads/profilephotos/avatar.png";
     let userId = "";
-    
+
     try {
         const userExist = await User.findOne({ username: username });
         const emailExist = await User.findOne({ email: email });
@@ -28,13 +27,21 @@ async function createUser(req, res) {
 
         if (req.file) {
 
+            const cloudPhoto = cloudinary.v2.uploader.upload(req.file.filename,
+                (error, result) => {
+                    console.log(result);
+                    return result;
+                })
+
+            console.log(cloudPhoto);
+
             await User.create({
                 username: username,
                 email: email,
                 password: decodedPass,
                 gender: gender,
                 bio: "",
-                profileImg: url + '/public/uploads/profilephotos/' + req.file.filename
+                profileImg: cloudPhoto
             }).then((user) => {
                 res.json(user);
                 userId = user._id;
@@ -73,7 +80,7 @@ async function fetchUser(req, res) {
             res.json(data);
         })
         .catch((err) => {
-            res.status(404).json({error:"No user found!"})
+            res.status(404).json({ error: "No user found!" })
         })
 }
 
@@ -84,7 +91,7 @@ async function login(req, res) {
     const user = await User.findOne({ username: username });
     const comparePass = bcrypt.compareSync(password, user.password);
 
-    if (!comparePass) { return res.status(401).json({error:"Username and Password dont match!"}); }
+    if (!comparePass) { return res.status(401).json({ error: "Username and Password dont match!" }); }
 
     res.json({ user });
 }

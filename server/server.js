@@ -9,6 +9,13 @@ const postController = require("./controllers/postsController");
 const commentController = require("./controllers/commentsController");
 const cors = require("cors");
 const upload = require("./middleware/uploader");
+const { v2: cloudinary } = require('cloudinary');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
 
 //create app of express
 const app = express();
