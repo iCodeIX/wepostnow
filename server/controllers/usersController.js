@@ -4,12 +4,12 @@ const bcrypt = require("bcryptjs");
 
 
 async function createUser(req, res) {
-    
+
     const { username, email, password, gender } = req.body;
     const decodedPass = bcrypt.hashSync(password);
     const defaultAvatar = "https://res.cloudinary.com/df9i6l8cw/image/upload/v1694160309/userphoto/ajwryub2y43co4okcrzy.png";
     let userId = "";
-    let imgPath = req.file.path;
+    // let imgPath = req.file.path;
 
     try {
         const userExist = await User.findOne({ username: username });
@@ -35,7 +35,7 @@ async function createUser(req, res) {
                 password: decodedPass,
                 gender: gender,
                 bio: "",
-                profileImg: imgPath
+                profileImg: defaultAvatar
             }).then((user) => {
                 res.json(user);
                 userId = user._id;
