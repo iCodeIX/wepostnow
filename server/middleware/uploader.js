@@ -1,7 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config({ path: __dirname + '/.env' });
 }
-
+const bodyparser = require('body-parser');
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
 

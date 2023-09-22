@@ -9,7 +9,7 @@ const postController = require("./controllers/postsController");
 const commentController = require("./controllers/commentsController");
 const cors = require("cors");
 const upload = require("./middleware/uploader");
-
+const bodyparser = require('body-parser');
 
 //create app of express
 const app = express();
@@ -21,6 +21,9 @@ app.use(cors({
     allowedHeaders: ['Content-Type'],
     exposedHeaders: ['Content-Type']
 }));
+
+// Use body-parser to parse incoming data
+app.use(bodyparser.urlencoded({extended : true})) 
 
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
