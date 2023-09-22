@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 async function createUser(req, res) {
     const { username, email, password, gender } = req.body;
     const decodedPass = bcrypt.hashSync(password);
-    const defaultAvatar = "https://res.cloudinary.com/df9i6l8cw/image/upload/v1694160309/userphoto/ajwryub2y43co4okcrzy.png";
+    const defaultAvatar = "https://res.cloudinary.com/df9i6l8cw/image/upload/v1695361888/userphoto/onzcgxivpcjhayyass7k.png";
     let userId = "";
     let imgPath = req.file.path;
 
