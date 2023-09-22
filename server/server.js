@@ -13,7 +13,6 @@ const upload = require("./middleware/uploader");
 
 //create app of express
 const app = express();
-app.use(express.static('public'));
 app.use(express.json());
 app.use(cors({
     origin: '*',
@@ -22,9 +21,6 @@ app.use(cors({
     allowedHeaders: ['Content-Type'],
     exposedHeaders: ['Content-Type']
 }));
-
-app.use('/public/uploads/profilephotos', express.static('images'));
-
 const port = process.env.PORT || 3000;
 
 connection();
