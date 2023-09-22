@@ -24,9 +24,6 @@ const Signup = () => {
     const handleCreateFormChange = (e) => {
         const { name, value } = e.target;
 
-
-
-
         if (name === "profileImg") {
             const image = e.target.files[0];
 
