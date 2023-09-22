@@ -16,8 +16,7 @@ const {
 cloudinary.config({
     cloud_name: CLOUD_NAME,
     api_key: API_KEY,
-    api_secret: API_SECRET,
-    secure: true
+    api_secret: API_SECRET
 });
 
 const storage = new CloudinaryStorage({
