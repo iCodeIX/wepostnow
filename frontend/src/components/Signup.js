@@ -18,7 +18,6 @@ const Signup = () => {
     const [showError, setShowError] = useState(false);
     const [error, setError] = useState("");
     const [passwordShow, setPasswordShow] = useState(false);
-    const [compressedFile, setCompressedFile] = useState(null);
     const navigate = useNavigate();
 
     const handleCreateFormChange = (e) => {
@@ -26,22 +25,11 @@ const Signup = () => {
 
 
         if (name === "profileImg") {
-            const image = e.target.files[0];
-
-            new Compressor(image, {
-                quality: 0.2, // 0.6 can also be used, but its not recommended to go below.
-                success: (compressedResult) => {
-                    // compressedResult has the compressed file.
-                    // Use the compressed file to upload the images to your server.        
-                    setCompressedFile(compressedResult)
-                },
-            });
-
 
             setCreateForm(
                 {
                     ...createForm,
-                    [name]: compressedFile,
+                    [name]: e.target.files[0]
                 }
             )
 
