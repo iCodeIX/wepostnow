@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-   origin: 'https://wepostnow-ph.vercel.app/'
+   origin: '*'
 }));
 app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT || 3000;
