@@ -14,9 +14,6 @@ const bodyParser = require('body-parser');
 //create app of express
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: "https://wepostnow.vercel.app"
-}));
 
 app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT || 3000;
