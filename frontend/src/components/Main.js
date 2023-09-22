@@ -29,14 +29,18 @@ const Main = () => {
     }
 
     const fetchAllPosts = async () => {
+        try {
+            await axios.post("/posts")
+                .then((response) => {
+                    setPosts(response.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        } catch (error) {
+            console.log("post error : ", error)
+        }
 
-        await axios.post("/posts")
-            .then((response) => {
-                setPosts(response.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
 

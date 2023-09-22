@@ -59,20 +59,25 @@ const Signup = () => {
         e.preventDefault();
         console.log(createForm);
         if (handleFormValidation()) {
-            const userCreate = await axios.post("/signup", createForm)
-                .then((response) => {
-                    return response.data;
-                })
-                .catch((err) => {
-                    setShowError(true);
-                    setError(err.response.data.error);
-                });
+            try {
+                const userCreate = await axios.post("/signup", createForm, { headers: { 'Content-Type': 'multipart/form-data' } })
+                    .then((response) => {
+                        return response.data;
+                    })
+                    .catch((err) => {
+                        setShowError(true);
+                        setError(err.response.data.error);
+                    });
 
 
-            if (userCreate) {
-                navigate('/main');
-                localStorage.setItem('id', userCreate._id);
+                if (userCreate) {
+                    navigate('/main');
+                    localStorage.setItem('id', userCreate._id);
+                }
+            } catch (error) {
+                console.log(error);
             }
+
         }
     }
 
