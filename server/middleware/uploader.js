@@ -1,30 +1,30 @@
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
 
-const multer = require('multer');
-const { uuid } = require('uuidv4');
-const DIR = './public/uploads/profilephotos/';
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, DIR);
+const {
+    CLOUD_NAME,
+    API_KEY,
+    API_SECRET,
+} = process.env;
+
+cloudinary.config({
+    cloud_name: CLOUD_NAME,
+    api_key: API_KEY,
+    api_secret: API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: "userphoto",
+        format: async () => "png",
+        public_id: (req, file) => file.filename,
     },
-    filename: (req, file, cb) => {
-        const fileName = file.originalname.toLowerCase().split(' ').join('-');
-        cb(null, uuid() + '-' + fileName)
-    }
 });
 
-const upload = multer({
-    storage: storage,
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-            cb(null, true);
-        } else {
-            cb(null, false);
-            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-        }
-    }
-});
-
+const parser = multer({ storage: storage });
 
 
 module.exports = upload;
