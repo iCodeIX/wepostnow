@@ -9,7 +9,7 @@ const postController = require("./controllers/postsController");
 const commentController = require("./controllers/commentsController");
 const cors = require("cors");
 const upload = require("./middleware/uploader");
-
+const cloudinary = require("cloudinary").v2;
 
 //create app of express
 const app = express();
@@ -22,7 +22,17 @@ app.use(cors({
     exposedHeaders: ['Content-Type']
 }));
 const port = process.env.PORT || 3000;
+const {
+    CLOUD_NAME,
+    API_KEY,
+    API_SECRET,
+} = process.env;
 
+cloudinary.config({
+    cloud_name: CLOUD_NAME,
+    api_key: API_KEY,
+    api_secret: API_SECRET,
+});
 connection();
 
 
