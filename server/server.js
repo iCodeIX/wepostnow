@@ -16,10 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     origin: '*',
-    credentials: true,
     methods: ['GET', 'POST', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
-    exposedHeaders: ['Content-Type']
 }));
 const port = process.env.PORT || 3000;
 
