@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: __dirname + '/.env' });
+  require('dotenv').config({ path: __dirname + '/.env' });
 }
 //import depencies
 const express = require("express");
@@ -15,27 +15,34 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: '*',
-    credentials: true,
-    methods: ['GET', 'POST', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
-    exposedHeaders: ['Content-Type']
+  origin: '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+  exposedHeaders: ['Content-Type']
 }));
 
 // Use body-parser to parse incoming data
-app.use(bodyParser.urlencoded({extended : true})) 
-app.use(bodyParser.json({limit: '35mb'}));
+app.use(bodyParser.json({ limit: '35mb' }));
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+    limit: '35mb',
+    parameterLimit: 50000,
+  }),
+);
 
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-  });
-  
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 const port = process.env.PORT || 3000;
 
 connection();
