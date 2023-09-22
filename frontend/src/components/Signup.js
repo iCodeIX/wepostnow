@@ -57,10 +57,10 @@ const Signup = () => {
 
     const createUser = async (e) => {
         e.preventDefault();
-        console.log(createForm);
+    
         if (handleFormValidation()) {
             try {
-                const userCreate = await axios.post("/signup", createForm, { headers: { 'Content-Type': 'multipart/form-data' } })
+                const userCreate = await axios.post("/signup", createForm)
                     .then((response) => {
                         return response.data;
                     })
@@ -114,8 +114,8 @@ const Signup = () => {
 
     return (
         <div className="signup-container">
-
-            <form className="signup-form" encType="multipart/form-data" onSubmit={createUser}>
+            {/* / encType="multipart/form-data"  */}
+            <form className="signup-form" onSubmit={createUser}>
 
                 <p className="signup-text">Create your Account</p>
                 {showError && (<p className="error-msg">{error}</p>)}
