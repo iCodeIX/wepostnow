@@ -59,7 +59,7 @@ const Signup = () => {
         e.preventDefault();
         console.log(createForm);
         if (handleFormValidation()) {
-            const userCreate = await axios.post("/signup", createForm, { headers: { 'Content-Type': 'multipart/form-data' } })
+            const userCreate = await axios.post("/signup", createForm)
                 .then((response) => {
                     return response.data;
                 })
