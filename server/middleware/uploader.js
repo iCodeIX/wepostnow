@@ -24,7 +24,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: "userphoto",
-        format: async () => "png",
+        format: async () => ['jpeg', 'png', 'jpg'],
         public_id: (req, file) => file.filename,
     },
 });
