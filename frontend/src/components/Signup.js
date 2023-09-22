@@ -24,6 +24,7 @@ const Signup = () => {
     const handleCreateFormChange = (e) => {
         const { name, value } = e.target;
 
+
         if (name === "profileImg") {
             const image = e.target.files[0];
 
@@ -70,7 +71,7 @@ const Signup = () => {
         e.preventDefault();
 
         if (handleFormValidation()) {
-            const userCreate = await axios.post("/signup", createForm)
+            const userCreate = await axios.post("/signup", createForm, { headers: { 'Content-Type': 'multipart/form-data' } })
                 .then((response) => {
                     return response.data;
                 })
