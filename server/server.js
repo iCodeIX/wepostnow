@@ -25,9 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 connection();
+// / upload.single('profileImg'),
 
-
-app.post("/signup", upload.single('profileImg'), controller.createUser);
+app.post("/signup", controller.createUser);
 app.post("/fetch-user", controller.fetchUser);
 app.post("/login", controller.login);
 app.get("/logout", controller.logout);
