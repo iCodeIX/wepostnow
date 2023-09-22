@@ -18,12 +18,12 @@ const Signup = () => {
     const [showError, setShowError] = useState(false);
     const [error, setError] = useState("");
     const [passwordShow, setPasswordShow] = useState(false);
-
+    const [compressedFile, setCompressedFile] = useState(null);
     const navigate = useNavigate();
 
     const handleCreateFormChange = (e) => {
         const { name, value } = e.target;
-        const [compressedFile, setCompressedFile] = useState(null);
+        
         const image = e.target.files[0];
 
         new Compressor(image, {
