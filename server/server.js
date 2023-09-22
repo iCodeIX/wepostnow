@@ -15,8 +15,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(express.json());
 const corsOptions = {
-  origin: 'https://wepostnow.vercel.app',
-  credentials: true,
+  origin: 'https://wepostnow-ph.vercel.app'
 }
 
 app.use(cors(corsOptions));
