@@ -10,18 +10,19 @@ const commentController = require("./controllers/commentsController");
 const cors = require("cors");
 const upload = require("./middleware/uploader");
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
 
 //create app of express
 const app = express();
 app.use(express.json());
 
 app.use(cors({
-   origin: '*',
-   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+  origin: "https://wepostnow-ph.vercel.app",
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 
 }));
 app.use(express.urlencoded({ extended: true }));
-const port = process.env.PORT || 3000;
+
 
 connection();
 
