@@ -60,7 +60,7 @@ const Signup = () => {
     
         if (handleFormValidation()) {
             try {
-                const userCreate = await axios.post("/signup", createForm)
+                const userCreate = await axios.post("/signup", createForm, { headers: { 'Content-Type': 'multipart/form-data' } })
                     .then((response) => {
                         return response.data;
                     })
@@ -114,8 +114,8 @@ const Signup = () => {
 
     return (
         <div className="signup-container">
-            {/* / encType="multipart/form-data"  */}
-            <form className="signup-form" onSubmit={createUser}>
+
+            <form className="signup-form" encType="multipart/form-data" onSubmit={createUser}>
 
                 <p className="signup-text">Create your Account</p>
                 {showError && (<p className="error-msg">{error}</p>)}
