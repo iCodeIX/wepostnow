@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./styles/Comment.css";
 import { Link } from "react-router-dom";
-
 const Comment = ({ postId, userId }) => {
 
     const [comments, setComments] = useState(null);
@@ -10,11 +9,10 @@ const Comment = ({ postId, userId }) => {
     const [commentTextArea, setCommentTextArea] = useState("");
     const [commentsCount, setCommentsCount] = useState(0);
 
-
     useEffect(() => {
         fetchComments();
 
-    }, [comments, commentsCount]);
+    }, []);
 
     const fetchComments = () => {
 
@@ -30,10 +28,6 @@ const Comment = ({ postId, userId }) => {
 
     }
 
-    const removePublic = (str) => {
-
-        return String(str).replace("/public", "");
-    }
 
     const commentFormChange = (e) => {
         const comment = e.target.value;
@@ -49,8 +43,9 @@ const Comment = ({ postId, userId }) => {
             postId
         }).then((response) => {
             setComments([...comments, response.data]);
+            fetchComments();
         })
-        
+
 
     }
 
@@ -83,7 +78,7 @@ const Comment = ({ postId, userId }) => {
                                             <li className="comment-item" key={comment._id}>
                                                 <div className="comment-user-details">
                                                     <Link style={profileLinkStyle} to={`/profile/${comment["user"]._id}`}>
-                                                        <img src={removePublic(comment["user"].profileImg)} className="comment-user-photo" alt="profile" />
+                                                        <img src={comment["user"].profileImg} className="comment-user-photo" alt="profile" />
                                                         <span className="comment-user-name">{comment["user"].username}</span>
                                                     </Link>
 

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./styles/Signup.css";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import Compressor from 'compressorjs';
+
 
 const Signup = () => {
     const [createForm, setCreateForm] = useState({
@@ -115,7 +115,7 @@ const Signup = () => {
     return (
         <div className="signup-container">
 
-            <form className="signup-form" encType="multipart/form-data" onSubmit={createUser}>
+            <form className="signup-form" onSubmit={createUser}>
 
                 <p className="signup-text">Create your Account</p>
                 {showError && (<p className="error-msg">{error}</p>)}

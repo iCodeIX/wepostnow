@@ -59,17 +59,13 @@ const UpdateProfile = ({ c_id, setToogleUpdate, bio, profileImg, fetchUser, fetc
         }
     }
 
-    function removePublic(src) {
-        return String(src).replace("/public", "");
-    }
-
     return (
 
         <div className="updateprofile-container">
 
             <button className="updatecancel-btn" onClick={() => setToogleUpdate(false)}><CloseOutlinedIcon /> </button>
             <div className="photoprev-container">
-                <img src={photoPrevFile !== null ? photoPrevUrl : removePublic(userProfile.profileImg)} alt="profile" />
+                <img src={photoPrevFile !== null && photoPrevUrl} alt="profile" />
             </div>
             <form className="updateProfile-form" onSubmit={updateProfile}>
                 <input className="updatedPhotoInput" type="file" name="profileImg" onChange={handleUpdateForm} />

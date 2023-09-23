@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 async function createUser(req, res) {
     const { username, email, password, gender } = req.body;
     const decodedPass = bcrypt.hashSync(password);
-    const defaultAvatar = "https://res.cloudinary.com/df9i6l8cw/image/upload/v1694160309/userphoto/ajwryub2y43co4okcrzy.png";
+    const defaultAvatar = "https://res.cloudinary.com/df9i6l8cw/image/upload/v1695429568/userphoto/vuissdcq3kdpv9nd22ff.png";
     let userId = "";
     let imgPath = req.file.path;
 
@@ -98,13 +98,13 @@ const updateProfile = async (req, res) => {
 
 
     const { id, bio } = req.body;
-    const url = req.protocol + '://' + req.get('host');
+    let imgPath = req.file.path;
 
     if (req.file) {
         await User.findOneAndUpdate({ _id: id },
             {
                 bio,
-                profileImg: url + '/public/uploads/profilephotos/' + req.file.filename
+                profileImg: imgPath
             }).then((response) => {
                 res.json(response.data);
             }).catch((err) => {

@@ -16,10 +16,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(cors({
-  origin: "*",
-  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-  optionsSuccessStatus: 200
-
+  origin: "*"
 }));
 
 
@@ -29,9 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 connection();
-// / upload.single('profileImg'),
 
-app.post("/signup", controller.createUser);
+app.post("/signup", upload.single('profileImg'), controller.createUser);
 app.post("/fetch-user", controller.fetchUser);
 app.post("/login", controller.login);
 app.get("/logout", controller.logout);

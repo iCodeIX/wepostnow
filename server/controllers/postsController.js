@@ -28,7 +28,7 @@ const fetchAllPosts = async (req, res) => {
 
     if (userId) {
         await Post.find({ user: userId })
-            .sort({ 'updatedAt': -1 })
+            .sort({ 'createdAt': -1 })
             .populate('user')
             .then((data) => {
                 res.json(data);
@@ -37,7 +37,7 @@ const fetchAllPosts = async (req, res) => {
 
     } else {
         await Post.find({})
-            .sort({ 'updatedAt': -1 })
+            .sort({ 'createdAt': -1 })
             .populate('user')
             .then((data) => {
                 res.json(data);

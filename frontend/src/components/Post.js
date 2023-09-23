@@ -8,11 +8,7 @@ import { useContext } from "react";
 const Post = () => {
 
     const userId = localStorage.getItem('id');
-    const { posts, setposts } = useContext(PostContext);
-
-    function removePublic(src) {
-        return String(src).replace("/public", "");
-    }
+    const { posts } = useContext(PostContext);
 
     function getDate(str) {
         const date = new Date(str.slice(0, 10));
@@ -58,7 +54,7 @@ const Post = () => {
                                 <li className="post-item" key={post._id}>
                                     <div className="link-container">
                                         <Link to={`/profile/${post["user"]._id}`} style={profileLinkStyle}>
-                                            <img className="post-user--photo" alt={post["user"].username} src={removePublic(post["user"].profileImg)} />
+                                            <img className="post-user--photo" alt={post["user"].username} src={post["user"].profileImg} />
                                             <span className="post-username">{post["user"].username}</span>
                                         </Link>
                                     </div>

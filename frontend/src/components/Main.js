@@ -1,7 +1,7 @@
 import "./styles/Main.css";
 import Post from "./Post";
 import NewPostField from "./NewPostField";
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./Header";
 import { UserContext } from "./UserContext";
