@@ -14,13 +14,13 @@ const port = process.env.PORT || 3000;
 
 //create app of express
 const app = express();
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
   origin: "*",
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 
 }));
+app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
 
