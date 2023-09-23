@@ -80,12 +80,17 @@ async function fetchUser(req, res) {
 async function login(req, res) {
     const { username, password } = req.body;
 
-    const user = await User.findOne({ username: username });
-    const comparePass = bcrypt.compareSync(password, user.password);
+    try {
+        const user = await User.findOne({ username: username });
+        const comparePass = bcrypt.compareSync(password, user.password);
 
-    if (!comparePass) { return res.status(401).json({ error: "Username and Password dont match!" }); }
+        if (!comparePass) { return res.status(401).json({ error: "Username and Password dont match!" }); }
 
-    res.json({ user });
+        res.json({ user });
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 
